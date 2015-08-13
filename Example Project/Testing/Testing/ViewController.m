@@ -11,7 +11,9 @@
 
 @interface ViewController ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *textFieldAtBottom;
-@property (strong, nonatomic) IBOutlet UITextField *textFieldAboveBottom;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldMiddle;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldTopLeft;
+@property (strong, nonatomic) IBOutlet UITextField *textFieldTopRight;
 
 @end
 
@@ -25,7 +27,9 @@
     
     
     keyboardAnimator = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextFieldArray:@[self.textFieldAtBottom,
-                                                                                          self.textFieldAboveBottom]
+                                                                                          self.textFieldMiddle,
+                                                                                          self.textFieldTopLeft,
+                                                                                          self.textFieldTopRight]
                                                                AndWhichViewWillAnimated:self.view];
     
 }
