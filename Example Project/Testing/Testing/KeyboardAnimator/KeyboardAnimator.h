@@ -28,6 +28,23 @@
 -(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)textFields AndWhichViewWillAnimated:(UIView*)animatedView;
 
 
+//    This is little bit complex initialization
+//    where we will provide a NSDictionary where keys are the actually all the UITextFields
+//    and values will be the corresponding UITextField, according to which animating elevation
+//    will depend -- for example we have 3 UITextField TF1, TF2 & TF3. & they are grouped together one below the other
+//
+//      |---------|
+//      |---TF1---|
+//      |---TF2---|
+//      |---TF3---|
+//      |---------|
+//    And we want to animate the keyboard just under the TF3 for every UITextFields.
+//
+//    To do this kind of work we will build a
+//
+-(id)initKeyboardAnimatorWithTextFieldAnimatingMapping:(NSDictionary*)textFieldMapping AndWhichViewWillAnimated:(UIView*)animatedView;
+
+
 
 //    Add a simple notification on keyboard change UIKeyboardDidShowNotification & UIKeyboardDidHideNotification
 //    notification. These notification will trigger when keyboard will appear and disappear.

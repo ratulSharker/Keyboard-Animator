@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 revesoft. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SimpleUsageViewcontroller.h"
 #import "KeyboardAnimator.h"
 
-@interface ViewController ()<UITextFieldDelegate>
+@interface SimpleUsageViewcontroller ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *textFieldAtBottom;
 @property (strong, nonatomic) IBOutlet UITextField *textFieldMiddle;
 @property (strong, nonatomic) IBOutlet UITextField *textFieldTopLeft;
@@ -17,7 +17,7 @@
 
 @end
 
-@implementation ViewController
+@implementation SimpleUsageViewcontroller
 {
     KeyboardAnimator *keyboardAnimator;
 }
