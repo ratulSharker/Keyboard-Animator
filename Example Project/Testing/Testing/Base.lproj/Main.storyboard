@@ -20,6 +20,7 @@
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZWE-jr-M1g">
                                 <rect key="frame" x="16" y="550" width="568" height="30"/>
+                                <color key="backgroundColor" red="0.56681599650000003" green="0.95143138110000003" blue="0.28701376750000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -28,6 +29,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LgJ-gg-U0h">
                                 <rect key="frame" x="16" y="512" width="568" height="30"/>
+                                <color key="backgroundColor" red="0.18337521849999999" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -36,6 +38,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GhE-G7-UOA">
                                 <rect key="frame" x="16" y="474" width="463" height="30"/>
+                                <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -44,6 +47,7 @@
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3WA-3r-8hv">
                                 <rect key="frame" x="487" y="474" width="97" height="30"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.40000000000000002" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3WA-3r-8hv" secondAttribute="height" multiplier="97:30" id="zq2-3c-KEU"/>
                                 </constraints>
@@ -78,12 +82,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="-484"/>
+            <point key="canvasLocation" x="1220" y="-620"/>
         </scene>
-        <!--View Controller-->
+        <!--Group Usage View Controller-->
         <scene sceneID="LJ1-yc-f2Q">
             <objects>
-                <viewController id="7ft-HY-Qk8" sceneMemberID="viewController">
+                <viewController id="7ft-HY-Qk8" customClass="GroupUsageViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FBB-IX-DXZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Fhe-CO-Ivq"/>
@@ -106,12 +110,18 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="7ft-HY-Qk8" id="ZcM-9I-6Wh"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tlh-yq-b7z">
                                         <rect key="frame" x="8" y="41" width="552" height="30"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="7ft-HY-Qk8" id="j9h-Ir-VUX"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.0" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,6 +137,11 @@
                                     <constraint firstItem="4eX-ty-8he" firstAttribute="leading" secondItem="tlh-yq-b7z" secondAttribute="leading" id="okR-uG-6xx"/>
                                     <constraint firstAttribute="bottom" secondItem="LiJ-Jj-vCl" secondAttribute="bottom" constant="1" id="sN5-QV-c4D"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eY0-UN-CJK">
                                 <rect key="frame" x="16" y="485" width="568" height="107"/>
@@ -137,17 +152,23 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="keyboard will be under here" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mui-do-pmN">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mui-do-pmN">
                                         <rect key="frame" x="11" y="76" width="546" height="30"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.79000000000000004" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="7ft-HY-Qk8" id="GsK-vN-7DH"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ver-QW-eEW">
                                         <rect key="frame" x="11" y="38" width="546" height="30"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="7ft-HY-Qk8" id="dda-p2-5Z7"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.82105004370000001" blue="0.2204436189" alpha="1" colorSpace="calibratedRGB"/>
@@ -164,7 +185,9 @@
                                     <constraint firstAttribute="trailing" secondItem="ver-QW-eEW" secondAttribute="trailing" constant="11" id="weu-lu-Jav"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -178,10 +201,16 @@
                             <constraint firstItem="eY0-UN-CJK" firstAttribute="trailing" secondItem="LQG-jn-QLj" secondAttribute="trailingMargin" id="vuV-8N-zc8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="groupAFirstTextField" destination="tlh-yq-b7z" id="OXQ-Se-dHL"/>
+                        <outlet property="groupASecondTextField" destination="LiJ-Jj-vCl" id="kwA-EL-1js"/>
+                        <outlet property="groupBFirstTextField" destination="ver-QW-eEW" id="Rip-kI-UgQ"/>
+                        <outlet property="groupBSecondTextField" destination="mui-do-pmN" id="cLN-Me-h7Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NNb-bU-9K8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="265"/>
+            <point key="canvasLocation" x="1220" y="129"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BCB-ky-yhe">
@@ -289,7 +318,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGh-7y-35k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="-78"/>
+            <point key="canvasLocation" x="438" y="-245"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E78D114C1B8EBAFC003CCB65 /* GroupUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */; };
 		E7FD48761B70D19100A76C80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD48751B70D19100A76C80 /* main.m */; };
 		E7FD48791B70D19100A76C80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD48781B70D19100A76C80 /* AppDelegate.m */; };
 		E7FD487C1B70D19100A76C80 /* SimpleUsageViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD487B1B70D19100A76C80 /* SimpleUsageViewcontroller.m */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E78D114A1B8EBAFC003CCB65 /* GroupUsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupUsageViewController.h; sourceTree = "<group>"; };
+		E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupUsageViewController.m; sourceTree = "<group>"; };
 		E7FD48701B70D19100A76C80 /* KeyboardAnimator Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KeyboardAnimator Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FD48741B70D19100A76C80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7FD48751B70D19100A76C80 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -69,6 +72,8 @@
 				E7FD48781B70D19100A76C80 /* AppDelegate.m */,
 				E7FD487A1B70D19100A76C80 /* SimpleUsageViewcontroller.h */,
 				E7FD487B1B70D19100A76C80 /* SimpleUsageViewcontroller.m */,
+				E78D114A1B8EBAFC003CCB65 /* GroupUsageViewController.h */,
+				E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */,
 				E7FD487D1B70D19100A76C80 /* Main.storyboard */,
 				E7FD48801B70D19100A76C80 /* Images.xcassets */,
 				E7FD48821B70D19100A76C80 /* LaunchScreen.xib */,
@@ -185,6 +190,7 @@
 				E7FD487C1B70D19100A76C80 /* SimpleUsageViewcontroller.m in Sources */,
 				E7FD489C1B70D21200A76C80 /* KeyboardAnimator.m in Sources */,
 				E7FD48791B70D19100A76C80 /* AppDelegate.m in Sources */,
+				E78D114C1B8EBAFC003CCB65 /* GroupUsageViewController.m in Sources */,
 				E7FD48761B70D19100A76C80 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

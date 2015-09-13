@@ -12,10 +12,9 @@
 
 //    These are the customization macro which are set to default values.
 //    Change the values to complete you need
-#define KEYBOARD_UP_ANIMATION_DURATION          0.5
-#define KEYBOARD_DOWN_ANIMATION_DURATION        0.25
-#define SPACING_BETWEEN_TEXTFIELD_AND_KEYBOARD  15
-
+#define DEFAULT_KEYBOARD_UP_ANIMATION_DURATION          0.5f
+#define DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION        0.25f
+#define DEFAULT_SPACING_BETWEEN_TEXTFIELD_AND_KEYBOARD  15.0f
 
 
 @interface KeyboardAnimator : NSObject
@@ -29,20 +28,34 @@
 
 
 //    This is little bit complex initialization
-//    where we will provide a NSDictionary where keys are the actually all the UITextFields
-//    and values will be the corresponding UITextField, according to which animating elevation
-//    will depend -- for example we have 3 UITextField TF1, TF2 & TF3. & they are grouped together one below the other
+//    where we will provide a two NSArray where. Two parameters named textFields & targetTextFields
+//    The first array is the responsible textField, for whom the elevation will occur. The second will be targeted text field, upto
+//    which the elevation will occur.
+
+//    for example, say we have 3 UITextFields named TF1, TF2, TF3 and they are placed in the GUI as following
 //
 //      |---------|
 //      |---TF1---|
 //      |---TF2---|
 //      |---TF3---|
 //      |---------|
+//
 //    And we want to animate the keyboard just under the TF3 for every UITextFields.
 //
-//    To do this kind of work we will build a
+//    To get this kind of functionality, we may use this initializer.
+//    To achieve the discussed result we will initializer as following :
 //
--(id)initKeyboardAnimatorWithTextFieldAnimatingMapping:(NSDictionary*)textFieldMapping AndWhichViewWillAnimated:(UIView*)animatedView;
+//  @param textFields
+//      @[TF1, TF2, TF3]
+//
+//
+//  @param targetTextField
+//      @[TF3, TF3, TF3]
+//
+//  here textFieldMapping's key will be all the UITextField which we are interested to animate,
+//  and value of those key's will be the resulting animated UITextField. So here for all UITextField
+//  we will animate upto TF3.
+-(id)initKeyboardAnimatorWithTextField:(NSArray*)textFields withTargetTextField:(NSArray*)targetTextField AndWhichViewWillAnimated:(UIView*)animatedView;
 
 
 
@@ -55,5 +68,27 @@
 //    must clean up the mess. Thats why this function will help you to remove the keyboard change notification.
 //    It is recommended to call this method in the viewWillDisappear / viewDidDisappear of the UIVIewController
 -(void)unregisterKeyboardEventListener;
+
+//    Here are some additional param settings
+//    These are the optional things you are about to customize your
+//    view animations
+
+//    keep in mind, except you set these following
+//    properties, default value declared in the macro
+//    will be used. macros are declared at the first
+//    of this file
+
+//    set the time interval of keyboard is moving up
+//    it wont make keyboard appear faster, otherwise
+//    it will animate the corresponding view according to the given time
+-(void) setKeyboardUpAnimationDuration:(NSTimeInterval)uptimeInterval;
+
+//    set the time interval of keyboard moving down
+//    it wont make the keyboard disappear faster, otherwise
+//    it will animate the corresponding view according to the given time
+-(void) setKeyboardDownAnimationDuration:(NSTimeInterval)downTimeInterval;
+
+//    set spacing between the keyboard and the targeted textField
+-(void) setSpacingBetweenKeyboardAndTargetedTextField:(CGFloat)spacing;
 
 @end
