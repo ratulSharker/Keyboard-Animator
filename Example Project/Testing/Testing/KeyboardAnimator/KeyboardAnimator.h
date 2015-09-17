@@ -24,7 +24,10 @@
 //    This is the simple initializer of the keyboard animator.
 //    To initialize properly provide an NSArray of UITextField and the UIView object which will be actually animated.
 //    For most of the case, animatedView param will be the ViewController's self.view
--(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)textFields AndWhichViewWillAnimated:(UIView*)animatedView;
+-(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)tf
+                   AndWhichViewWillAnimated:(UIView*)view
+                          bottomConstraints:(NSArray*)bottomConstraints
+                       nonBottomConstraints:(NSArray*)nonBottomConstraints;
 
 
 //    This is little bit complex initialization
@@ -55,7 +58,11 @@
 //  here textFieldMapping's key will be all the UITextField which we are interested to animate,
 //  and value of those key's will be the resulting animated UITextField. So here for all UITextField
 //  we will animate upto TF3.
--(id)initKeyboardAnimatorWithTextField:(NSArray*)textFields withTargetTextField:(NSArray*)targetTextField AndWhichViewWillAnimated:(UIView*)animatedView;
+-(id)initKeyboardAnimatorWithTextField:(NSArray*)tf
+                   withTargetTextField:(NSArray*)targetTf
+              AndWhichViewWillAnimated:(UIView*)animatedView
+                     bottomConstraints:(NSArray*)bottomConstraints
+                  nonBottomConstraints:(NSArray*)nonBottomConstraints;
 
 
 

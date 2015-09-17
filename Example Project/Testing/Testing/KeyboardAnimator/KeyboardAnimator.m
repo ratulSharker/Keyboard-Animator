@@ -16,12 +16,21 @@
     NSArray *textFields;
     NSArray *targetTextFields;
     
+    NSArray *verticalBottomConstraints;
+    NSArray *verticalNonBottomConstraints;
+    
+    
     //some optional params
     NSTimeInterval keyboardUpTimeInterval, keyboardDownTimeInterval;
     CGFloat        spacingBetweenKeyboardAndTarget;
+    
+    NSString *animKeyboard;
 }
 
--(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)tf AndWhichViewWillAnimated:(UIView*)view;
+-(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)tf
+                   AndWhichViewWillAnimated:(UIView*)view
+                          bottomConstraints:(NSArray*)bottomConstraints
+                       nonBottomConstraints:(NSArray*)nonBottomConstraints
 {
     self = [super init];
     
@@ -33,6 +42,9 @@
         targetTextFields = tf;
         viewThatWillBeActuallyAnimated = view;
         
+        verticalBottomConstraints = bottomConstraints;
+        verticalNonBottomConstraints = nonBottomConstraints;
+        
         //setting default values to the animation params
         keyboardUpTimeInterval = DEFAULT_KEYBOARD_UP_ANIMATION_DURATION;
         keyboardDownTimeInterval = DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION;
@@ -42,10 +54,17 @@
     return self;
 }
 
--(id)initKeyboardAnimatorWithTextField:(NSArray*)tf withTargetTextField:(NSArray*)targetTf AndWhichViewWillAnimated:(UIView*)animatedView;
+-(id)initKeyboardAnimatorWithTextField:(NSArray*)tf
+                   withTargetTextField:(NSArray*)targetTf
+              AndWhichViewWillAnimated:(UIView*)animatedView
+                     bottomConstraints:(NSArray*)bottomConstraints
+                  nonBottomConstraints:(NSArray*)nonBottomConstraints
 {
     
-    self = [self initKeyboardAnimatorWithTextFieldArray:tf AndWhichViewWillAnimated:animatedView];
+    self = [self initKeyboardAnimatorWithTextFieldArray:tf
+                               AndWhichViewWillAnimated:animatedView
+                                      bottomConstraints:bottomConstraints
+                                   nonBottomConstraints:nonBottomConstraints];
     
     if(self != nil)
     {
@@ -104,71 +123,85 @@
     //NSLog(@"KEYBOARD FRAME: %@", NSStringFromCGRect(keyboardFrame));
     
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    
+        //find out which uitextField is responsible for this keyboard operation
+        UITextField *responsibleTextField = nil;
+        UIView *viewWhichWillAnimate = viewThatWillBeActuallyAnimated;
         
+        for(unsigned int i = 0;i < textFields.count ; i++)
         {
-            //find out which uitextField is responsible for this keyboard operation
-
-            UITextField *responsibleTextField = nil;
-            UIView *viewWhichWillAnimate = viewThatWillBeActuallyAnimated;
-            
-            for(unsigned int i = 0;i < textFields.count ; i++)
+            UITextField *textField = [textFields objectAtIndex:i];
+            if([textField isFirstResponder])
             {
-                UITextField *textField = [textFields objectAtIndex:i];
-                if([textField isFirstResponder])
-                {
-                    responsibleTextField = [targetTextFields objectAtIndex:i];
-                    break;
-                }
+                responsibleTextField = [targetTextFields objectAtIndex:i];
+                break;
             }
+        }
+        
+        if(responsibleTextField != nil)
+        {
+            //now we calculate, do we need any animation or not
+
+            CGPoint topLeftCorner = [responsibleTextField convertPoint:CGPointZero toView:[UIApplication sharedApplication].keyWindow];
             
-            if(responsibleTextField != nil)
+            //NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
+            if(topLeftCorner.y + responsibleTextField.frame.size.height != keyboardFrame.origin.y)
             {
-                //now we calculate, do we need any animation or not
-
-                CGPoint topLeftCorner = [responsibleTextField convertPoint:CGPointZero toView:[UIApplication sharedApplication].keyWindow];
+                CGFloat animatedDistance = 0;
                 
-                //NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
+                //NSLog(@"Animated distance %f Animated Height %f", animatedDistance, animatedHeight);
                 
-                if(topLeftCorner.y + responsibleTextField.frame.size.height != keyboardFrame.origin.y)
+                //so now we actually need the animation
+                if(animatedHeight == 0)
                 {
-                    
-                    CGFloat animatedDistance = 0;
-                    
-                    
-                    //NSLog(@"Animated distance %f Animated Height %f", animatedDistance, animatedHeight);
-                    
-                    
-                    //so now we actually need the animation
-                    if(animatedHeight == 0)
-                    {
-                        animatedDistance = animatedHeight = responsibleTextField.frame.size.height + topLeftCorner.y - keyboardFrame.origin.y + spacingBetweenKeyboardAndTarget;
-                    }
-                    else
-                    {
-                        animatedDistance = responsibleTextField.frame.size.height + topLeftCorner.y - keyboardFrame.origin.y + spacingBetweenKeyboardAndTarget;
-                        animatedHeight += animatedDistance;
-                    }
-
-                    //NSLog(@"Animated distance %f Animated Height %f", animatedDistance, animatedHeight);
-                    
-                    if(animatedDistance != 0)
+                    animatedDistance = animatedHeight = responsibleTextField.frame.size.height + topLeftCorner.y - keyboardFrame.origin.y + spacingBetweenKeyboardAndTarget;
+                }
+                else
+                {
+                    animatedDistance = responsibleTextField.frame.size.height + topLeftCorner.y - keyboardFrame.origin.y + spacingBetweenKeyboardAndTarget;
+                    animatedHeight += animatedDistance;
+                }
+                
+                if(verticalBottomConstraints || verticalNonBottomConstraints)
+                {
+                    if(verticalBottomConstraints)
+                    for(NSLayoutConstraint *verticalConstraint in verticalBottomConstraints)
                     {
                         [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
-                            viewWhichWillAnimate.frame = CGRectMake(viewWhichWillAnimate.frame.origin.x
-                                                                    , viewWhichWillAnimate.frame.origin.y - animatedDistance
-                                                                    , viewWhichWillAnimate.frame.size.width
-                                                                    , viewWhichWillAnimate.frame.size.height);
-                            
+                            verticalConstraint.constant += animatedDistance;
+                            [viewWhichWillAnimate layoutIfNeeded];
                         }];
                     }
+                    
+                    if(verticalNonBottomConstraints)
+                    for(NSLayoutConstraint *verticalConstraint in verticalNonBottomConstraints)
+                    {
+                        [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                            verticalConstraint.constant -= animatedDistance;
+                            [viewWhichWillAnimate layoutIfNeeded];
+                        }];
+                    }
+                    
+                }
+                else
+                
+                
+                //NSLog(@"Animated distance %f Animated Height %f", animatedDistance, animatedHeight);
+                if(animatedDistance != 0)
+                {
+                    
+                    [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                        viewWhichWillAnimate.frame = CGRectMake(viewWhichWillAnimate.frame.origin.x
+                                                                , viewWhichWillAnimate.frame.origin.y - animatedDistance
+                                                                , viewWhichWillAnimate.frame.size.width
+                                                                , viewWhichWillAnimate.frame.size.height);
+                    }];
                 }
             }
-            
-            else
-            {
-                //it wont never happen, just curious about it :)
-                NSLog(@"NO RESPONSIBLE UITEXTFIELD FOUND FOR ANIMATION");
-            }
+        }
+        else
+        {
+            //these grp or field is not responsible for animating the keybaord up word
         }
     }];
 }
@@ -177,14 +210,35 @@
 {
     if(animatedHeight > 0)
     {
-        if(animatedHeight > 0)
+        
+        if(verticalBottomConstraints || verticalNonBottomConstraints)
+        {
+            if(verticalBottomConstraints)
+                for(NSLayoutConstraint *verticalConstraint in verticalBottomConstraints)
+                {
+                    [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                        verticalConstraint.constant -= animatedHeight;
+                        [viewThatWillBeActuallyAnimated layoutIfNeeded];
+                    }];
+                }
+            
+            if(verticalNonBottomConstraints)
+                for(NSLayoutConstraint *verticalConstraint in verticalNonBottomConstraints)
+                {
+                    [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                        verticalConstraint.constant += animatedHeight;
+                        [viewThatWillBeActuallyAnimated layoutIfNeeded];
+                    }];
+                }
+            
+        }
+        else
         {
             [UIView animateWithDuration:keyboardDownTimeInterval animations:^{
                 viewThatWillBeActuallyAnimated.frame = CGRectMake(viewThatWillBeActuallyAnimated.frame.origin.x
                                                                   , viewThatWillBeActuallyAnimated.frame.origin.y + animatedHeight
                                                                   , viewThatWillBeActuallyAnimated.frame.size.width
                                                                   , viewThatWillBeActuallyAnimated.frame.size.height);
-                
             }];
         }
         animatedHeight = 0;

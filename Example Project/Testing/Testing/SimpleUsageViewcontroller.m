@@ -30,7 +30,9 @@
                                                                                           self.textFieldMiddle,
                                                                                           self.textFieldTopLeft,
                                                                                           self.textFieldTopRight]
-                                                               AndWhichViewWillAnimated:self.view];
+                                                               AndWhichViewWillAnimated:self.view
+                                                                      bottomConstraints:nil
+                                                                   nonBottomConstraints:nil];
     
 }
 

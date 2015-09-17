@@ -10,11 +10,32 @@
 #import "KeyboardAnimator.h"
 
 @interface GroupUsageViewController ()<UITextFieldDelegate>
+
+//contanier views
+@property (strong, nonatomic) IBOutlet UIView *groupAContainerView;
+@property (strong, nonatomic) IBOutlet UIView *groupBContainerView;
+@property (strong, nonatomic) IBOutlet UIView *groupCContainerView;
+
+
+//text fields
 @property (strong, nonatomic) IBOutlet UITextField *groupAFirstTextField;
 @property (strong, nonatomic) IBOutlet UITextField *groupASecondTextField;
 
 @property (strong, nonatomic) IBOutlet UITextField *groupBFirstTextField;
 @property (strong, nonatomic) IBOutlet UITextField *groupBSecondTextField;
+
+@property (strong, nonatomic) IBOutlet UITextField *groupCFirstTextField;
+@property (strong, nonatomic) IBOutlet UITextField *groupCSecondTextField;
+
+
+//contraints
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *groupABottomContraint;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *groupBTopContraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *groupBBottomContraint;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *groupCTopContraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *groupCBottomConstraint;
 
 @end
 
@@ -22,18 +43,29 @@
 {
     KeyboardAnimator *keyboardAnimatorForGrpA;
     KeyboardAnimator *keyboardAnimatorForGrpB;
+    KeyboardAnimator *keyboardAnimatorForGrpC;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    keyboardAnimatorForGrpA = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupAFirstTextField, self.groupASecondTextField]
-                                                                      withTargetTextField:@[self.groupASecondTextField, self.groupASecondTextField]
-                                                                 AndWhichViewWillAnimated:self.view];
+//    keyboardAnimatorForGrpA = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupAFirstTextField, self.groupASecondTextField]
+//                                                                      withTargetTextField:@[self.groupASecondTextField, self.groupASecondTextField]
+//                                                                 AndWhichViewWillAnimated:self.groupAContainerView
+//                                                                        bottomConstraints:@[self.groupABottomContraint]
+//                                                                     nonBottomConstraints:nil];
     
     keyboardAnimatorForGrpB = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupBFirstTextField, self.groupBSecondTextField]
                                                                       withTargetTextField:@[self.groupBSecondTextField, self.groupBSecondTextField]
-                                                                 AndWhichViewWillAnimated:self.view];
+                                                                 AndWhichViewWillAnimated:self.groupBContainerView
+                                                                        bottomConstraints:@[self.groupBBottomContraint]
+                                                                     nonBottomConstraints:@[self.groupBTopContraint]];
+    
+    keyboardAnimatorForGrpC = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupCFirstTextField, self.groupCSecondTextField]
+                                                                      withTargetTextField:@[self.groupCSecondTextField, self.groupCSecondTextField]
+                                                                      AndWhichViewWillAnimated:self.groupCContainerView
+                                                                             bottomConstraints:@[self.groupCBottomConstraint]
+                                                                          nonBottomConstraints:nil];
     
 }
 
@@ -45,15 +77,17 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [keyboardAnimatorForGrpA registerKeyboardEventListener];
+//    [keyboardAnimatorForGrpA registerKeyboardEventListener];
     [keyboardAnimatorForGrpB registerKeyboardEventListener];
+    [keyboardAnimatorForGrpC registerKeyboardEventListener];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [keyboardAnimatorForGrpA unregisterKeyboardEventListener];
+//    [keyboardAnimatorForGrpA unregisterKeyboardEventListener];
     [keyboardAnimatorForGrpB unregisterKeyboardEventListener];
+    [keyboardAnimatorForGrpC unregisterKeyboardEventListener];
 }
 
 /*
