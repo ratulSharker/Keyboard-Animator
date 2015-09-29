@@ -145,7 +145,7 @@
             CGPoint topLeftCorner = [responsibleTextField convertPoint:CGPointZero toView:[UIApplication sharedApplication].keyWindow];
             
             //NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
-            if(topLeftCorner.y + responsibleTextField.frame.size.height != keyboardFrame.origin.y)
+            if(topLeftCorner.y + responsibleTextField.frame.size.height > keyboardFrame.origin.y)
             {
                 CGFloat animatedDistance = 0;
                 
