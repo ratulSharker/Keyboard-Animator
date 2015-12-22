@@ -125,12 +125,12 @@
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
     
         //find out which uitextField is responsible for this keyboard operation
-        UITextField *responsibleTextField = nil;
+        UIView *responsibleTextField = nil;
         UIView *viewWhichWillAnimate = viewThatWillBeActuallyAnimated;
         
         for(unsigned int i = 0;i < textFields.count ; i++)
         {
-            UITextField *textField = [textFields objectAtIndex:i];
+            UITextView *textField = [textFields objectAtIndex:i];
             if([textField isFirstResponder])
             {
                 responsibleTextField = [targetTextFields objectAtIndex:i];
@@ -144,7 +144,18 @@
 
             CGPoint topLeftCorner = [responsibleTextField convertPoint:CGPointZero toView:[UIApplication sharedApplication].keyWindow];
             
-            //NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
+            if([responsibleTextField isKindOfClass:[UITextView class]])
+            {
+                UITextView *responsibleTextView = (UITextView*)responsibleTextField;
+                topLeftCorner.y += MAX(responsibleTextView.contentSize.height - responsibleTextView.frame.size.height, 0);
+                
+                NSLog(@"size %@", NSStringFromCGSize(responsibleTextView.contentSize));
+            }
+
+            
+            NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
+            
+
             if(topLeftCorner.y + responsibleTextField.frame.size.height > keyboardFrame.origin.y)
             {
                 CGFloat animatedDistance = 0;
