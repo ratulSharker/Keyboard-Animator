@@ -6,7 +6,7 @@
 //
 
 #import "GroupUsageViewController.h"
-#import "KeyboardAnimator.h"
+#import <KeyboardAnimator/KeyboardAnimator.h>
 
 @interface GroupUsageViewController ()<UITextFieldDelegate>
 

@@ -10,6 +10,10 @@
 		E782E3531BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E782E3521BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m */; };
 		E78D114C1B8EBAFC003CCB65 /* GroupUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */; };
 		E7AD062E1C5F521B00AB1358 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AD062D1C5F521B00AB1358 /* app_icon.png */; };
+		E7AD063B1C5F59F000AB1358 /* KeyboardAnimator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7AD06341C5F59F000AB1358 /* KeyboardAnimator.framework */; };
+		E7AD06411C5F5A5300AB1358 /* KeyboardAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD489B1B70D21200A76C80 /* KeyboardAnimator.m */; };
+		E7AD06471C5F606500AB1358 /* KeyboardAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FD489A1B70D21200A76C80 /* KeyboardAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7AD064A1C5F60F800AB1358 /* KeyboardAnimator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7AD06491C5F60F800AB1358 /* KeyboardAnimator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7FB182D1C29118F00B0B66A /* SupportingUITextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */; };
 		E7FD48761B70D19100A76C80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD48751B70D19100A76C80 /* main.m */; };
 		E7FD48791B70D19100A76C80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD48781B70D19100A76C80 /* AppDelegate.m */; };
@@ -17,8 +21,31 @@
 		E7FD487F1B70D19100A76C80 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FD487D1B70D19100A76C80 /* Main.storyboard */; };
 		E7FD48811B70D19100A76C80 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FD48801B70D19100A76C80 /* Images.xcassets */; };
 		E7FD48841B70D19100A76C80 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7FD48821B70D19100A76C80 /* LaunchScreen.xib */; };
-		E7FD489C1B70D21200A76C80 /* KeyboardAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD489B1B70D21200A76C80 /* KeyboardAnimator.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E7AD06391C5F59F000AB1358 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7FD48681B70D19100A76C80 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7AD06331C5F59F000AB1358;
+			remoteInfo = KeyboardAnimator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E7AD06401C5F59F000AB1358 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E7AD064A1C5F60F800AB1358 /* KeyboardAnimator.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		E782E3511BA57D24003CCEC0 /* CustomizingAnimationParamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomizingAnimationParamViewController.h; sourceTree = "<group>"; };
@@ -26,6 +53,10 @@
 		E78D114A1B8EBAFC003CCB65 /* GroupUsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupUsageViewController.h; sourceTree = "<group>"; };
 		E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupUsageViewController.m; sourceTree = "<group>"; };
 		E7AD062D1C5F521B00AB1358 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
+		E7AD06341C5F59F000AB1358 /* KeyboardAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7AD06361C5F59F000AB1358 /* KeyboardAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardAnimator.h; sourceTree = "<group>"; };
+		E7AD06381C5F59F000AB1358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7AD06491C5F60F800AB1358 /* KeyboardAnimator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeyboardAnimator.framework; path = "Build/Debug-iphonesimulator/KeyboardAnimator.framework"; sourceTree = "<group>"; };
 		E7FB182B1C29118F00B0B66A /* SupportingUITextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportingUITextViewViewController.h; sourceTree = "<group>"; };
 		E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportingUITextViewViewController.m; sourceTree = "<group>"; };
 		E7FD48701B70D19100A76C80 /* KeyboardAnimator Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KeyboardAnimator Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,10 +76,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E7AD06301C5F59F000AB1358 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7FD486D1B70D19100A76C80 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AD063B1C5F59F000AB1358 /* KeyboardAnimator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,11 +102,22 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		E7AD06351C5F59F000AB1358 /* KeyboardAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				E7AD06361C5F59F000AB1358 /* KeyboardAnimator.h */,
+				E7AD06381C5F59F000AB1358 /* Info.plist */,
+			);
+			path = KeyboardAnimator;
+			sourceTree = "<group>";
+		};
 		E7FD48671B70D19100A76C80 = {
 			isa = PBXGroup;
 			children = (
+				E7AD06491C5F60F800AB1358 /* KeyboardAnimator.framework */,
 				E7FD48721B70D19100A76C80 /* Testing */,
 				E7FD488C1B70D19100A76C80 /* TestingTests */,
+				E7AD06351C5F59F000AB1358 /* KeyboardAnimator */,
 				E7FD48711B70D19100A76C80 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				E7FD48701B70D19100A76C80 /* KeyboardAnimator Example.app */,
+				E7AD06341C5F59F000AB1358 /* KeyboardAnimator.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,7 +191,36 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		E7AD06311C5F59F000AB1358 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7AD06471C5F606500AB1358 /* KeyboardAnimator.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		E7AD06331C5F59F000AB1358 /* KeyboardAnimator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7AD063D1C5F59F000AB1358 /* Build configuration list for PBXNativeTarget "KeyboardAnimator" */;
+			buildPhases = (
+				E7AD062F1C5F59F000AB1358 /* Sources */,
+				E7AD06301C5F59F000AB1358 /* Frameworks */,
+				E7AD06311C5F59F000AB1358 /* Headers */,
+				E7AD06321C5F59F000AB1358 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyboardAnimator;
+			productName = KeyboardAnimator;
+			productReference = E7AD06341C5F59F000AB1358 /* KeyboardAnimator.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		E7FD486F1B70D19100A76C80 /* KeyboardAnimator Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7FD48931B70D19100A76C80 /* Build configuration list for PBXNativeTarget "KeyboardAnimator Example" */;
@@ -148,10 +228,12 @@
 				E7FD486C1B70D19100A76C80 /* Sources */,
 				E7FD486D1B70D19100A76C80 /* Frameworks */,
 				E7FD486E1B70D19100A76C80 /* Resources */,
+				E7AD06401C5F59F000AB1358 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E7AD063A1C5F59F000AB1358 /* PBXTargetDependency */,
 			);
 			name = "KeyboardAnimator Example";
 			productName = Testing;
@@ -167,6 +249,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = revesoft;
 				TargetAttributes = {
+					E7AD06331C5F59F000AB1358 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					E7FD486F1B70D19100A76C80 = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
@@ -186,11 +271,19 @@
 			projectRoot = "";
 			targets = (
 				E7FD486F1B70D19100A76C80 /* KeyboardAnimator Example */,
+				E7AD06331C5F59F000AB1358 /* KeyboardAnimator */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E7AD06321C5F59F000AB1358 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7FD486E1B70D19100A76C80 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -205,12 +298,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E7AD062F1C5F59F000AB1358 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7AD06411C5F5A5300AB1358 /* KeyboardAnimator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7FD486C1B70D19100A76C80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				E7FD487C1B70D19100A76C80 /* SimpleUsageViewcontroller.m in Sources */,
-				E7FD489C1B70D21200A76C80 /* KeyboardAnimator.m in Sources */,
 				E7FB182D1C29118F00B0B66A /* SupportingUITextViewViewController.m in Sources */,
 				E782E3531BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m in Sources */,
 				E7FD48791B70D19100A76C80 /* AppDelegate.m in Sources */,
@@ -220,6 +320,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E7AD063A1C5F59F000AB1358 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7AD06331C5F59F000AB1358 /* KeyboardAnimator */;
+			targetProxy = E7AD06391C5F59F000AB1358 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E7FD487D1B70D19100A76C80 /* Main.storyboard */ = {
@@ -241,6 +349,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E7AD063E1C5F59F000AB1358 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_TESTABILITY = YES;
+				INFOPLIST_FILE = KeyboardAnimator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KeyboardAnimator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E7AD063F1C5F59F000AB1358 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = KeyboardAnimator/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.KeyboardAnimator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		E7FD48911B70D19100A76C80 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -279,7 +439,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -328,6 +488,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Testing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "KeyboardAnimator Example";
 			};
 			name = Debug;
@@ -346,6 +507,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E7AD063D1C5F59F000AB1358 /* Build configuration list for PBXNativeTarget "KeyboardAnimator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7AD063E1C5F59F000AB1358 /* Debug */,
+				E7AD063F1C5F59F000AB1358 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E7FD486B1B70D19100A76C80 /* Build configuration list for PBXProject "KeyboardAnimator Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

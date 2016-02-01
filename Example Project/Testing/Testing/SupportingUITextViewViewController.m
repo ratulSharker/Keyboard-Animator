@@ -6,7 +6,7 @@
 //
 
 #import "SupportingUITextViewViewController.h"
-#import "KeyboardAnimator/KeyboardAnimator.h"
+#import <KeyboardAnimator/KeyboardAnimator.h>
 
 
 @interface SupportingUITextViewViewController ()

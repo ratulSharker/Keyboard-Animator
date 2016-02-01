@@ -6,7 +6,7 @@
 //
 
 #import "CustomizingAnimationParamViewController.h"
-#import "KeyboardAnimator.h"
+#import <KeyboardAnimator/KeyboardAnimator.h>
 
 @interface CustomizingAnimationParamViewController () <UITextFieldDelegate>
 

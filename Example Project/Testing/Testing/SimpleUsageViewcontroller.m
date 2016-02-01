@@ -6,7 +6,7 @@
 //
 
 #import "SimpleUsageViewcontroller.h"
-#import "KeyboardAnimator.h"
+#import <KeyboardAnimator/KeyboardAnimator.h>
 
 @interface SimpleUsageViewcontroller ()<UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *textFieldAtBottom;
