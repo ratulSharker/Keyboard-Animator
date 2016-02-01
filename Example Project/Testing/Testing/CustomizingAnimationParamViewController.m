@@ -63,6 +63,10 @@
     //customizing animation thing
     [keyboardAnimatorForGrpA setKeyboardUpAnimationDuration:2.0];
     [keyboardAnimatorForGrpA setKeyboardDownAnimationDuration:3.0];
+    
+    //animate down event is been customized for animate with the keyboard
+    //not after the keyboard has moved to the bottom
+    [keyboardAnimatorForGrpB setKeyboardDownAnimationOn:UIKeyboardWillHideNotification];
 }
 
 

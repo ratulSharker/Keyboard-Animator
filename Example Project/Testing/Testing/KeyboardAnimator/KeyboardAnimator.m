@@ -22,7 +22,8 @@
     NSTimeInterval keyboardUpTimeInterval, keyboardDownTimeInterval;
     CGFloat        spacingBetweenKeyboardAndTarget;
     
-    NSString *animKeyboard;
+    NSString *animateKeyboardUpEvent;
+    NSString *animateKeyboardDownEvent;
 }
 
 -(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)tf
@@ -47,6 +48,9 @@
         keyboardUpTimeInterval = DEFAULT_KEYBOARD_UP_ANIMATION_DURATION;
         keyboardDownTimeInterval = DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION;
         spacingBetweenKeyboardAndTarget = DEFAULT_SPACING_BETWEEN_TEXTFIELD_AND_KEYBOARD;
+        
+        animateKeyboardUpEvent = DEFAULT_KEYBOARD_ANIMATE_UP_EVENT;
+        animateKeyboardDownEvent = DEFAULT_KEYBOARD_ANIMATE_DOWN_EVENT;
     }
     
     return self;
@@ -79,8 +83,8 @@
 {
     //register keyboard on screen & off screen callback notification
     NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
-    [notiCenter addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardDidShowNotification object:nil];
-    [notiCenter addObserver:self selector:@selector(keyboardOffScreen:) name:UIKeyboardDidHideNotification object:nil];
+    [notiCenter addObserver:self selector:@selector(keyboardOnScreen:) name:animateKeyboardUpEvent object:nil];
+    [notiCenter addObserver:self selector:@selector(keyboardOffScreen:) name:animateKeyboardDownEvent object:nil];
 }
 
 -(void)unregisterKeyboardEventListener
@@ -89,6 +93,15 @@
     NSNotificationCenter *notiCenter = [NSNotificationCenter defaultCenter];
     [notiCenter removeObserver:self];
 }
+
+
+
+
+
+
+
+
+
 
 #pragma mark optional public functionality
 -(void) setKeyboardUpAnimationDuration:(NSTimeInterval)uptimeInterval
@@ -106,10 +119,29 @@
     spacingBetweenKeyboardAndTarget = spacing;
 }
 
+-(void) setKeyboardUpAnimationOn:(NSString*)animateUpEvent
+{
+    animateKeyboardUpEvent = animateUpEvent;
+}
+
+-(void) setKeyboardDownAnimationOn:(NSString*)animateDownEvent
+{
+    animateKeyboardDownEvent = animateDownEvent;
+}
 
 
 
-#pragma keyboard appearance
+
+
+
+
+
+
+
+
+
+
+#pragma mark core private handler
 -(void)keyboardOnScreen:(NSNotification *)notification
 {
     NSDictionary *info  = notification.userInfo;

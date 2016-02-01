@@ -14,6 +14,11 @@
 #define DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION        0.25f
 #define DEFAULT_SPACING_BETWEEN_TEXTFIELD_AND_KEYBOARD  15.0f
 
+UIKIT_EXTERN NSString *const UIKeyboardWillShowNotification;
+UIKIT_EXTERN NSString *const UIKeyboardWillHideNotification;
+
+#define DEFAULT_KEYBOARD_ANIMATE_UP_EVENT               UIKeyboardDidShowNotification
+#define DEFAULT_KEYBOARD_ANIMATE_DOWN_EVENT             UIKeyboardDidHideNotification
 
 @interface KeyboardAnimator : NSObject
 
@@ -96,4 +101,31 @@
 //    set spacing between the keyboard and the targeted textField
 -(void) setSpacingBetweenKeyboardAndTargetedTextField:(CGFloat)spacing;
 
+
+//    set the action which will fire the animation up
+//
+//    NB :: to apply effectively set the value before "registerKeyboardEventListener"
+//          if the case is such that, need a dynamic effect, you should unregister the event listerner
+//          using "unregisterKeyboardEventListener" then re-register using "registerKeyboardEventListener"
+//          after calling this method
+//
+//    @param animateUpEvent
+//      valid values for animateUpEvent are
+//      1. UIKeyboardDidShowNotification
+//      2. UIKeyboardWillShowNotification
+-(void) setKeyboardUpAnimationOn:(NSString*)animateUpEvent;
+
+
+//    set the action which will fire the animation down
+//
+//    NB :: to apply effectively set the value before "registerKeyboardEventListener"
+//          if the case is such that, need a dynamic effect, you should unregister the event listerner
+//          using "unregisterKeyboardEventListener" then re-register using "registerKeyboardEventListener"
+//          after calling this method
+//
+//    @param animateDownEvent
+//      valid values for animateUpEvent are
+//      1. UIKeyboardDidHideNotification
+//      2. UIKeyboardWillHideNotification
+-(void) setKeyboardDownAnimationOn:(NSString*)animateDownEvent;
 @end
