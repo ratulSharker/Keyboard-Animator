@@ -1,9 +1,7 @@
 //
 //  KeyboardAnimator.h
-//  MissYouCall
 //
 //  Created by Ratul Sharker on 8/4/15.
-//  Copyright (c) 2015 REVE Systems. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
