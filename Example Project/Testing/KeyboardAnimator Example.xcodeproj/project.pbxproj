@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E782E3531BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E782E3521BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m */; };
 		E78D114C1B8EBAFC003CCB65 /* GroupUsageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */; };
+		E7AD062E1C5F521B00AB1358 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AD062D1C5F521B00AB1358 /* app_icon.png */; };
 		E7FB182D1C29118F00B0B66A /* SupportingUITextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */; };
 		E7FD48761B70D19100A76C80 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD48751B70D19100A76C80 /* main.m */; };
 		E7FD48791B70D19100A76C80 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD48781B70D19100A76C80 /* AppDelegate.m */; };
@@ -24,6 +25,7 @@
 		E782E3521BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomizingAnimationParamViewController.m; sourceTree = "<group>"; };
 		E78D114A1B8EBAFC003CCB65 /* GroupUsageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupUsageViewController.h; sourceTree = "<group>"; };
 		E78D114B1B8EBAFC003CCB65 /* GroupUsageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupUsageViewController.m; sourceTree = "<group>"; };
+		E7AD062D1C5F521B00AB1358 /* app_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app_icon.png; sourceTree = "<group>"; };
 		E7FB182B1C29118F00B0B66A /* SupportingUITextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportingUITextViewViewController.h; sourceTree = "<group>"; };
 		E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportingUITextViewViewController.m; sourceTree = "<group>"; };
 		E7FD48701B70D19100A76C80 /* KeyboardAnimator Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KeyboardAnimator Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7AD062C1C5F521B00AB1358 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				E7AD062D1C5F521B00AB1358 /* app_icon.png */,
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
 		E7FD48671B70D19100A76C80 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +83,7 @@
 		E7FD48721B70D19100A76C80 /* Testing */ = {
 			isa = PBXGroup;
 			children = (
+				E7AD062C1C5F521B00AB1358 /* resource */,
 				E7FD48991B70D21200A76C80 /* KeyboardAnimator */,
 				E7FD48771B70D19100A76C80 /* AppDelegate.h */,
 				E7FD48781B70D19100A76C80 /* AppDelegate.m */,
@@ -184,6 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AD062E1C5F521B00AB1358 /* app_icon.png in Resources */,
 				E7FD487F1B70D19100A76C80 /* Main.storyboard in Resources */,
 				E7FD48841B70D19100A76C80 /* LaunchScreen.xib in Resources */,
 				E7FD48811B70D19100A76C80 /* Images.xcassets in Resources */,
