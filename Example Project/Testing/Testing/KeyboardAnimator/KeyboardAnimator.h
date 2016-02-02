@@ -14,8 +14,6 @@
 #define DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION        0.25f
 #define DEFAULT_SPACING_BETWEEN_TEXTFIELD_AND_KEYBOARD  15.0f
 
-UIKIT_EXTERN NSString *const UIKeyboardWillShowNotification;
-UIKIT_EXTERN NSString *const UIKeyboardWillHideNotification;
 
 #define DEFAULT_KEYBOARD_ANIMATE_UP_EVENT               UIKeyboardDidShowNotification
 #define DEFAULT_KEYBOARD_ANIMATE_DOWN_EVENT             UIKeyboardDidHideNotification
