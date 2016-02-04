@@ -10,9 +10,9 @@ is the dynamic solution for this kind of problem. It is very easy to use,
 we will demonstrate 3 simple steps to use this & get all you want. Currently autolayout support is added.
 
 ##Demos
-
-
 ![Keyboard-Animator](https://github.com/ratulSharker/Keyboard-Animator/blob/master/screenshots/keyboard_animation_full.gif "Usage Demo")
 
 
 Follow the [wiki](https://github.com/ratulSharker/Keyboard-Animator/wiki) for integration details
+
+Feel free to report any issues or contact me @ sharker.ratul.08@gmail.om
