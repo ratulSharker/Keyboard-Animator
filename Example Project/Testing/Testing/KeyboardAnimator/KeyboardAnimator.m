@@ -24,6 +24,8 @@
     
     NSString *animateKeyboardUpEvent;
     NSString *animateKeyboardDownEvent;
+    
+    enum KeyboardAnimatorDurationType durationType;
 }
 
 -(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)tf
@@ -51,6 +53,9 @@
         
         animateKeyboardUpEvent = DEFAULT_KEYBOARD_ANIMATE_UP_EVENT;
         animateKeyboardDownEvent = DEFAULT_KEYBOARD_ANIMATE_DOWN_EVENT;
+        
+        
+        durationType = KEYBOARD_ANIMATION_DURATION_TYPE_PROVIDED;
     }
     
     return self;
@@ -129,26 +134,34 @@
     animateKeyboardDownEvent = animateDownEvent;
 }
 
-
-
-
-
-
-
-
-
-
-
+-(void) setKeyboardAnimationIntervalType:(enum KeyboardAnimatorDurationType)durType
+{
+    durationType = durType;
+}
 
 
 #pragma mark core private handler
 -(void)keyboardOnScreen:(NSNotification *)notification
 {
-    NSDictionary *info  = notification.userInfo;
-    NSValue      *value = info[UIKeyboardFrameEndUserInfoKey];
-    
-    CGRect rawFrame      = [value CGRectValue];
+    NSDictionary    *info  = notification.userInfo;
+    NSValue         *rectValue = info[UIKeyboardFrameEndUserInfoKey];
+    NSNumber        *rawDuration = info[UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber        *animationCurve = info[UIKeyboardAnimationCurveUserInfoKey];
+
+    CGRect rawFrame      = [rectValue CGRectValue];
     CGRect keyboardFrame = [[UIApplication sharedApplication].keyWindow convertRect:rawFrame fromView:nil];
+    
+    double actualDuration;
+    
+    if(durationType == KEYBOARD_ANIMATION_DURATION_TYPE_PROVIDED)
+    {
+        actualDuration = keyboardUpTimeInterval;
+    }
+    else if(durationType == KEYBOARD_ANIMATION_DURATION_TYPE_AS_KEYBOARD)
+    {
+        actualDuration = [rawDuration doubleValue];
+    }
+    
     
     //NSLog(@"KEYBOARD FRAME: %@", NSStringFromCGRect(keyboardFrame));
     
@@ -185,7 +198,7 @@
             
             NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
             
-
+            
             if(topLeftCorner.y + responsibleTextField.frame.size.height > keyboardFrame.origin.y)
             {
                 CGFloat animatedDistance = 0;
@@ -208,35 +221,44 @@
                     if(verticalBottomConstraints)
                     for(NSLayoutConstraint *verticalConstraint in verticalBottomConstraints)
                     {
-                        [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
-                            verticalConstraint.constant += animatedDistance;
-                            [viewWhichWillAnimate layoutIfNeeded];
-                        }];
+                        [UIView animateWithDuration:actualDuration
+                                              delay:0.0
+                                            options:[animationCurve intValue]
+                                         animations:^{
+                             verticalConstraint.constant += animatedDistance;
+                             [viewWhichWillAnimate layoutIfNeeded];
+                            }
+                                         completion:nil];
                     }
                     
                     if(verticalNonBottomConstraints)
                     for(NSLayoutConstraint *verticalConstraint in verticalNonBottomConstraints)
                     {
-                        [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                        [UIView animateWithDuration:actualDuration
+                                              delay:0.0
+                                            options:[animationCurve intValue]
+                                         animations:^{
                             verticalConstraint.constant -= animatedDistance;
                             [viewWhichWillAnimate layoutIfNeeded];
-                        }];
+                        }
+                                         completion:nil];
+                        
                     }
                     
                 }
                 else
-                
-                
-                //NSLog(@"Animated distance %f Animated Height %f", animatedDistance, animatedHeight);
                 if(animatedDistance != 0)
                 {
-                    
-                    [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                    [UIView animateWithDuration:actualDuration
+                                          delay:0.0
+                                        options:[animationCurve intValue]
+                                     animations:^{
                         viewWhichWillAnimate.frame = CGRectMake(viewWhichWillAnimate.frame.origin.x
                                                                 , viewWhichWillAnimate.frame.origin.y - animatedDistance
                                                                 , viewWhichWillAnimate.frame.size.width
                                                                 , viewWhichWillAnimate.frame.size.height);
-                    }];
+                    } completion:nil];
+                    
                 }
             }
         }
@@ -249,38 +271,68 @@
 
 -(void)keyboardOffScreen:(NSNotification *)notification
 {
+    
+    NSDictionary            *info  = notification.userInfo;
+    NSNumber                *rawDuration = info[UIKeyboardAnimationDurationUserInfoKey];
+    NSNumber                *animationCurve = info[UIKeyboardAnimationCurveUserInfoKey];
+    
+    
+    double actualDuration=0.0;
+    
+    if(durationType == KEYBOARD_ANIMATION_DURATION_TYPE_PROVIDED)
+    {
+        actualDuration = keyboardDownTimeInterval;
+    }
+    else if(durationType == KEYBOARD_ANIMATION_DURATION_TYPE_AS_KEYBOARD)
+    {
+        actualDuration = [rawDuration doubleValue];
+    }
+    
+    
     if(animatedHeight > 0)
     {
-        
         if(verticalBottomConstraints || verticalNonBottomConstraints)
         {
             if(verticalBottomConstraints)
                 for(NSLayoutConstraint *verticalConstraint in verticalBottomConstraints)
                 {
-                    [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                    [UIView animateWithDuration:actualDuration
+                                          delay:0.0
+                                        options:[animationCurve intValue]
+                                     animations:^{
                         verticalConstraint.constant -= animatedHeight;
                         [viewThatWillBeActuallyAnimated layoutIfNeeded];
-                    }];
+                    }
+                                     completion:nil];
                 }
             
             if(verticalNonBottomConstraints)
                 for(NSLayoutConstraint *verticalConstraint in verticalNonBottomConstraints)
                 {
-                    [UIView animateWithDuration:keyboardUpTimeInterval animations:^{
+                    [UIView animateWithDuration:actualDuration
+                                          delay:0.0
+                                        options:[animationCurve intValue]
+                                     animations:^{
                         verticalConstraint.constant += animatedHeight;
                         [viewThatWillBeActuallyAnimated layoutIfNeeded];
-                    }];
+                    }
+                                     completion:nil];
                 }
             
         }
         else
         {
-            [UIView animateWithDuration:keyboardDownTimeInterval animations:^{
+            
+            [UIView animateWithDuration:actualDuration
+                                  delay:0.0
+                                options:[animationCurve intValue]
+                             animations:^{
                 viewThatWillBeActuallyAnimated.frame = CGRectMake(viewThatWillBeActuallyAnimated.frame.origin.x
                                                                   , viewThatWillBeActuallyAnimated.frame.origin.y + animatedHeight
                                                                   , viewThatWillBeActuallyAnimated.frame.size.width
                                                                   , viewThatWillBeActuallyAnimated.frame.size.height);
-            }];
+            } completion:nil];
+            
         }
         animatedHeight = 0;
     }

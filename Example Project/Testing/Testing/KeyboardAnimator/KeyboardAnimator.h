@@ -11,12 +11,20 @@
 //    These are the customization macro which are set to default values.
 //    Change the values to complete you need
 #define DEFAULT_KEYBOARD_UP_ANIMATION_DURATION          0.5f
-#define DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION        0.25f
+#define DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION        0.25F
 #define DEFAULT_SPACING_BETWEEN_TEXTFIELD_AND_KEYBOARD  15.0f
+
+
+enum KeyboardAnimatorDurationType
+{
+    KEYBOARD_ANIMATION_DURATION_TYPE_PROVIDED,
+    KEYBOARD_ANIMATION_DURATION_TYPE_AS_KEYBOARD
+};
 
 
 #define DEFAULT_KEYBOARD_ANIMATE_UP_EVENT               UIKeyboardDidShowNotification
 #define DEFAULT_KEYBOARD_ANIMATE_DOWN_EVENT             UIKeyboardDidHideNotification
+
 
 @interface KeyboardAnimator : NSObject
 
@@ -126,4 +134,8 @@
 //      1. UIKeyboardDidHideNotification
 //      2. UIKeyboardWillHideNotification
 -(void) setKeyboardDownAnimationOn:(NSString*)animateDownEvent;
+
+
+// in still devlopment
+-(void) setKeyboardAnimationIntervalType:(enum KeyboardAnimatorDurationType)durationType;
 @end
