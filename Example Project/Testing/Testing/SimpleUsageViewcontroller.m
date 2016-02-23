@@ -33,6 +33,12 @@
                                                                       bottomConstraints:nil
                                                                    nonBottomConstraints:nil];
     
+    
+    //syncing with keyboard animation style
+    [keyboardAnimator setKeyboardUpAnimationOn:UIKeyboardWillShowNotification];
+    [keyboardAnimator setKeyboardDownAnimationOn:UIKeyboardWillHideNotification];
+    [keyboardAnimator setKeyboardAnimationIntervalType:KEYBOARD_ANIMATION_DURATION_TYPE_AS_KEYBOARD];
+    
 }
 
 - (void)didReceiveMemoryWarning {

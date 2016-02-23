@@ -12,24 +12,21 @@
 
 @property (strong, nonatomic) IBOutlet UIView *groupAContainerView;
 @property (strong, nonatomic) IBOutlet UIView *groupBContainerView;
+@property (strong, nonatomic) IBOutlet UIView *groupCContainerView;
 
 
-@property (strong, nonatomic) IBOutlet UITextField *groupATextFieldA;
-@property (strong, nonatomic) IBOutlet UITextField *groupATextFieldB;
+@property (strong, nonatomic) IBOutlet UITextField *groupATextField;
+@property (strong, nonatomic) IBOutlet UITextField *groupBTextField;
+@property (strong, nonatomic) IBOutlet UITextField *groupCTextField;
 
-
-
-@property (strong, nonatomic) IBOutlet UITextField *groupBTextFieldA;
-@property (strong, nonatomic) IBOutlet UITextField *groupBTextFieldB;
-
+//constraints
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *grpALayoutBottom;
-
-
 
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *grpBLayoutTop;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *grpBLayoutBottom;
 
-
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *grpCLayoutTop;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *grpCLayoutBottom;
 
 @end
 
@@ -37,6 +34,7 @@
 {
     KeyboardAnimator *keyboardAnimatorForGrpA;
     KeyboardAnimator *keyboardAnimatorForGrpB;
+    KeyboardAnimator *keyboardAnimatorForGrpC;
 }
 
 
@@ -46,27 +44,38 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    keyboardAnimatorForGrpA = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupATextFieldA, self.groupATextFieldB]
-                                                                      withTargetTextField:@[self.groupATextFieldB, self.groupATextFieldB]
+    keyboardAnimatorForGrpA = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupATextField]
+                                                                      withTargetTextField:@[self.groupATextField]
                                                                  AndWhichViewWillAnimated:self.groupAContainerView
                                                                         bottomConstraints:@[self.grpALayoutBottom]
                                                                      nonBottomConstraints:nil];
     
-    
-    keyboardAnimatorForGrpB = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupBTextFieldA, self.groupBTextFieldB]
-                                                                      withTargetTextField:@[self.groupBTextFieldB, self.groupBTextFieldB]
+    keyboardAnimatorForGrpB = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupBTextField]
+                                                                      withTargetTextField:@[self.groupBTextField]
                                                                  AndWhichViewWillAnimated:self.groupBContainerView
                                                                         bottomConstraints:@[self.grpBLayoutBottom]
                                                                      nonBottomConstraints:@[self.grpBLayoutTop]];
+    
+    keyboardAnimatorForGrpC = [[KeyboardAnimator alloc] initKeyboardAnimatorWithTextField:@[self.groupCTextField]
+                                                                      withTargetTextField:@[self.groupCTextField]
+                                                                 AndWhichViewWillAnimated:self.groupCContainerView
+                                                                        bottomConstraints:@[self.grpCLayoutBottom]
+                                                                     nonBottomConstraints:@[self.grpCLayoutTop]];
 
     
-    //customizing animation thing
+    //customizing grp A
     [keyboardAnimatorForGrpA setKeyboardUpAnimationDuration:2.0];
     [keyboardAnimatorForGrpA setKeyboardDownAnimationDuration:3.0];
-    
+
+    //customizing grp B
     //animate down event is been customized for animate with the keyboard
     //not after the keyboard has moved to the bottom
     [keyboardAnimatorForGrpB setKeyboardDownAnimationOn:UIKeyboardWillHideNotification];
+
+    //customizing grp C
+    [keyboardAnimatorForGrpC setKeyboardUpAnimationOn:UIKeyboardWillShowNotification];
+    [keyboardAnimatorForGrpC setKeyboardDownAnimationOn:UIKeyboardWillHideNotification];
+    [keyboardAnimatorForGrpC setKeyboardAnimationIntervalType:KEYBOARD_ANIMATION_DURATION_TYPE_AS_KEYBOARD];
 }
 
 
@@ -76,6 +85,7 @@
     
     [keyboardAnimatorForGrpA registerKeyboardEventListener];
     [keyboardAnimatorForGrpB registerKeyboardEventListener];
+    [keyboardAnimatorForGrpC registerKeyboardEventListener];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -84,6 +94,7 @@
     
     [keyboardAnimatorForGrpA unregisterKeyboardEventListener];
     [keyboardAnimatorForGrpB unregisterKeyboardEventListener];
+    [keyboardAnimatorForGrpC unregisterKeyboardEventListener];
 }
 
 
