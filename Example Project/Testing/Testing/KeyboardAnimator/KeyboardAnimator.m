@@ -165,6 +165,8 @@
     
     //NSLog(@"KEYBOARD FRAME: %@", NSStringFromCGRect(keyboardFrame));
     
+    
+    
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
     
         //find out which uitextField is responsible for this keyboard operation
@@ -184,7 +186,28 @@
         if(responsibleTextField != nil)
         {
             //now we calculate, do we need any animation or not
-
+            
+            
+            //
+            //  our designated text field are the reason for this
+            //  keyboard to animate, so time to call the delegate
+            //  all information collected, call the delegate
+            //
+            if(self.keyboardAnimatorDelegate &&
+               [self.keyboardAnimatorDelegate respondsToSelector:@selector(keyboardAnimator:
+                                                                           keywindowConvertedFrame:
+                                                                           animationDuration:
+                                                                           isKeyboardShowing:)])
+            {
+                //we are prepared to call the delegate
+                [self.keyboardAnimatorDelegate keyboardAnimator:self
+                                        keywindowConvertedFrame:keyboardFrame
+                                              animationDuration:actualDuration
+                                              isKeyboardShowing:YES];
+            }
+            
+            
+            
             CGPoint topLeftCorner = [responsibleTextField convertPoint:CGPointZero toView:[UIApplication sharedApplication].keyWindow];
             
             if([responsibleTextField isKindOfClass:[UITextView class]])
@@ -196,7 +219,7 @@
             }
 
             
-            NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
+            //NSLog(@"RESPONSIBLE FIELD FRAME %f %f %f", topLeftCorner.y, responsibleTextField.frame.size.height , keyboardFrame.origin.y);
             
             
             if(topLeftCorner.y + responsibleTextField.frame.size.height > keyboardFrame.origin.y)
@@ -291,6 +314,22 @@
     
     if(animatedHeight > 0)
     {
+        //
+        //  all information collected, call the delegate
+        //
+        if(self.keyboardAnimatorDelegate &&
+           [self.keyboardAnimatorDelegate respondsToSelector:@selector(keyboardAnimator:
+                                                                       keywindowConvertedFrame:
+                                                                       animationDuration:
+                                                                       isKeyboardShowing:)])
+        {
+            //we are prepared to call the delegate
+            [self.keyboardAnimatorDelegate keyboardAnimator:self
+                                    keywindowConvertedFrame:CGRectZero
+                                          animationDuration:actualDuration
+                                          isKeyboardShowing:NO];
+        }
+        
         if(verticalBottomConstraints || verticalNonBottomConstraints)
         {
             if(verticalBottomConstraints)

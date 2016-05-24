@@ -30,6 +30,7 @@
 		E7AD062E1C5F521B00AB1358 /* app_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E7AD062D1C5F521B00AB1358 /* app_icon.png */; };
 		E7AD06411C5F5A5300AB1358 /* KeyboardAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FD489B1B70D21200A76C80 /* KeyboardAnimator.m */; };
 		E7AD06471C5F606500AB1358 /* KeyboardAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = E7FD489A1B70D21200A76C80 /* KeyboardAnimator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7B28B461CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B28B451CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.m */; };
 		E7E1F46E1C6077E600182DBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E751D2C51C6068430051BFBF /* UIKit.framework */; };
 		E7E1F46F1C6077EC00182DBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E751D2CB1C606BE40051BFBF /* Foundation.framework */; };
 		E7FB182D1C29118F00B0B66A /* SupportingUITextViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */; };
@@ -77,6 +78,8 @@
 		E7AD06341C5F59F000AB1358 /* KeyboardAnimator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardAnimator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7AD06361C5F59F000AB1358 /* KeyboardAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardAnimator.h; sourceTree = "<group>"; };
 		E7AD06381C5F59F000AB1358 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7B28B441CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsingKeyboardAnimatorDelegateViewController.h; sourceTree = "<group>"; };
+		E7B28B451CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsingKeyboardAnimatorDelegateViewController.m; sourceTree = "<group>"; };
 		E7FB182B1C29118F00B0B66A /* SupportingUITextViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportingUITextViewViewController.h; sourceTree = "<group>"; };
 		E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportingUITextViewViewController.m; sourceTree = "<group>"; };
 		E7FD48701B70D19100A76C80 /* KeyboardAnimator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardAnimator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +175,8 @@
 				E782E3521BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m */,
 				E7FB182B1C29118F00B0B66A /* SupportingUITextViewViewController.h */,
 				E7FB182C1C29118F00B0B66A /* SupportingUITextViewViewController.m */,
+				E7B28B441CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.h */,
+				E7B28B451CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.m */,
 				E7FD487D1B70D19100A76C80 /* Main.storyboard */,
 				E7FD48801B70D19100A76C80 /* Images.xcassets */,
 				E7FD48821B70D19100A76C80 /* LaunchScreen.xib */,
@@ -356,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7B28B461CF1C4D8007C663B /* UsingKeyboardAnimatorDelegateViewController.m in Sources */,
 				E7FD487C1B70D19100A76C80 /* SimpleUsageViewcontroller.m in Sources */,
 				E7FB182D1C29118F00B0B66A /* SupportingUITextViewViewController.m in Sources */,
 				E782E3531BA57D24003CCEC0 /* CustomizingAnimationParamViewController.m in Sources */,

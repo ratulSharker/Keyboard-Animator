@@ -3,9 +3,25 @@
 //
 //  Created by Ratul Sharker on 8/4/15.
 //
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+//
+//  forward declaration to be used in
+//  protocol declaration
+//
+@class KeyboardAnimator;
+
+#pragma mark UNDOCUMENTED
+@protocol KeyboardAnimatorDelegate <NSObject>
+@optional
+-(void)keyboardAnimator:(KeyboardAnimator*)ka
+keywindowConvertedFrame:(CGRect)frame
+      animationDuration:(NSTimeInterval)animTime
+      isKeyboardShowing:(BOOL)isShowing;
+
+@end
+
 
 /*________________________________________________________________________________________________________________________
  |                                                                                                                        |
@@ -31,7 +47,8 @@ enum KeyboardAnimatorDurationType
 
 @interface KeyboardAnimator : NSObject
 
-
+#pragma mark UNDOCUMENTED
+@property id<KeyboardAnimatorDelegate> keyboardAnimatorDelegate;
 
 /*________________________________________________________________________________________________________________________
  |                                                                                                                        |
