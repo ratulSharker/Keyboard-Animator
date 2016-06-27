@@ -23,11 +23,11 @@ keywindowConvertedFrame:(CGRect)frame
 @end
 
 
-/*________________________________________________________________________________________________________________________
- |                                                                                                                        |
- |  These are the customization macro which are set to default values.                                                    |
- |  Change the values to complete you need                                                                                |
- |________________________________________________________________________________________________________________________|
+/*______________________________________________________________________
+ |                                                                      |
+ |  These are the customization macro which are set to default values.  |
+ |  Change the values to complete you need                              |
+ |______________________________________________________________________|
 */
 #define DEFAULT_KEYBOARD_UP_ANIMATION_DURATION          0.5f
 #define DEFAULT_KEYBOARD_DOWN_ANIMATION_DURATION        0.25F
@@ -50,12 +50,14 @@ enum KeyboardAnimatorDurationType
 #pragma mark UNDOCUMENTED
 @property id<KeyboardAnimatorDelegate> keyboardAnimatorDelegate;
 
-/*________________________________________________________________________________________________________________________
- |                                                                                                                        |
- |  This is the simple initializer of the keyboard animator.                                                              |
- |  To initialize properly provide an NSArray of UITextField and the UIView object which will be actually animated.       |
- |  For most of the case, animatedView param will be the ViewController's self.view                                       |
- |________________________________________________________________________________________________________________________|
+/*_____________________________________________________________
+ |                                                             |
+ |  This is the simple initializer of the keyboard animator.   |
+ |  To initialize properly provide an NSArray of UITextField   |
+ |  and the UIView object which will be actually animated.     |
+ |  For most of the case, animatedView param will be the       |
+ |  ViewController's self.view                                 |
+ |_____________________________________________________________|
 */
 -(id)initKeyboardAnimatorWithTextFieldArray:(NSArray*)tf
                    AndWhichViewWillAnimated:(UIView*)view
@@ -63,38 +65,46 @@ enum KeyboardAnimatorDurationType
                        nonBottomConstraints:(NSArray*)nonBottomConstraints;
 
 
-/*________________________________________________________________________________________________________________________
- |                                                                                                                        |
- |  This is little bit complex initialization                                                                             |
- |  where we will provide a two NSArray where. Two parameters named textFields & targetTextFields                         |
- |  The first array is the responsible textField, for whom the elevation will occur.                                      |
- |  The second will be targeted text field, upto                                                                          |
- |  which the elevation will occur.                                                                                       |
- |                                                                                                                        |
- |  for example, say we have 3 UITextFields named TF1, TF2, TF3 and they are placed in the GUI as following               |
- |                                                                                                                        |
- |      !---------!                                                                                                       |
- |      !---TF1---!                                                                                                       |
- |      !---TF2---!                                                                                                       |
- |      !---TF3---!                                                                                                       |
- |      !---------!                                                                                                       |
- |                                                                                                                        |
- |  And we want to animate the keyboard just under the TF3 for every UITextFields.                                        |
- |                                                                                                                        |
- |  To get this kind of functionality, we may use this initializer.                                                       |
- |  To achieve the discussed result we will initializer as following :                                                    |
- |                                                                                                                        |
- |  @param textFields                                                                                                     |
- |  @[TF1, TF2, TF3]                                                                                                      |
- |                                                                                                                        |
- |                                                                                                                        |
- |  @param targetTextField                                                                                                |
- |  @[TF3, TF3, TF3]                                                                                                      |
- |                                                                                                                        |
- |  here textFieldMapping's key will be all the UITextField which we are interested to animate,                           |
- |  and value of those key's will be the resulting animated UITextField. So here for all UITextField                      |
- |  we will animate upto TF3.                                                                                             |
- |________________________________________________________________________________________________________________________|
+/*______________________________________________________________
+ |                                                              |
+ |  This is little bit complex initialization                   |
+ |  where we will provide a two NSArray where. Two parameters   |
+ |  named textFields & targetTextFields                         |
+ |  The first array is the responsible textField, for whom the  |
+ |  elevation will occur.                                       |
+ |  The second will be targeted text field, upto                |
+ |  which the elevation will occur.                             |
+ |                                                              |
+ |  for example, say we have 3 UITextFields named TF1, TF2, TF3 |
+ |  and they are placed in the GUI as following                 |
+ |                                                              |
+ |      !---------!                                             |
+ |      !---TF1---!                                             |
+ |      !---TF2---!                                             |
+ |      !---TF3---!                                             |
+ |      !---------!                                             |
+ |                                                              |
+ |  And we want to animate the keyboard just under the TF3 for  |
+ |  every UITextFields.                                         |
+ |                                                              |
+ |  To get this kind of functionality, we may use this          |
+ |  initializer.                                                |
+ |  To achieve the discussed result we will initializer as      |
+ |  following :                                                 |
+ |                                                              |
+ |  @param textFields                                           |
+ |  @[TF1, TF2, TF3]                                            |
+ |                                                              |
+ |                                                              |
+ |  @param targetTextField                                      |
+ |  @[TF3, TF3, TF3]                                            |
+ |                                                              |
+ |  here textFieldMapping's key will be all the UITextField     |
+ |  which we are interested to animate,                         |
+ |  and value of those key's will be the resulting animated     |
+ |  UITextField. So here for all UITextField                    |
+ |  we will animate upto TF3.                                   |
+ |______________________________________________________________|
 */
 -(id)initKeyboardAnimatorWithTextField:(NSArray*)tf
                    withTargetTextField:(NSArray*)targetTf
@@ -103,12 +113,17 @@ enum KeyboardAnimatorDurationType
                   nonBottomConstraints:(NSArray*)nonBottomConstraints;
 
 
-/*________________________________________________________________________________________________________________________
- |                                                                                                                        |
- |  Add a simple notification on keyboard change UIKeyboardDidShowNotification & UIKeyboardDidHideNotification            |
- |  notification. These notification will trigger when keyboard will appear and disappear.                                |
- |  It is recommended to call this method in the viewWillAppear / viewDidAppear method of the UIViewController            |
- |________________________________________________________________________________________________________________________|
+/*______________________________________________________________
+ |                                                              |
+ |  Add a simple notification on keyboard change                |
+ |  UIKeyboardDidShowNotification &                             |
+ |  UIKeyboardDidHideNotification                               |
+ |  notification. These notification will trigger when          |
+ |  keyboard will appear and disappear.                         |
+ |  It is recommended to call this method in the                |
+ |  viewWillAppear / viewDidAppear method of the                |
+ |  UIViewController                                            |
+ |______________________________________________________________|
 */
 -(void)registerKeyboardEventListener;
 
