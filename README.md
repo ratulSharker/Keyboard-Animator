@@ -15,7 +15,8 @@ we will demonstrate 3 simple steps to use this & get all you want. Currently aut
 
 
 
+<h2>Integration / Usage</h2>
 
-Follow the [WIKI](https://github.com/ratulSharker/Keyboard-Animator/wiki) for integration details
+Follow the <a href="https://github.com/ratulSharker/Keyboard-Animator/wiki">WIKI</a> for integration details
 
-Feel free to report any issues or contact me @ sharker.ratul.08@gmail.om
+Feel free to report any issues or contact me @ sharker.ratul.08@gmail.com
